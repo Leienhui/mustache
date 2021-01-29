@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div id="div">
+        </di>
+        <script>
+            // 模板字符串
+            let templateStr = `<h1>我叫{{name}},今年{{age}}，我是一个{{sex}}孩子</h1>`;
+            // 数据
+            let data = {
+                "name": "小明",
+                "age": 18,
+                "sex": "男"
+            }
+
+            function render(templateStr, data) {
+                return templateStr.replace(/\{\{(\w+)\}\}/g, function (findStr, params, ) {
+                    console.log(data[params])
+                    return data[params]
+                })
+            }
+            let domStr = render(templateStr, data)
+            let div = document.getElementById('div')
+            div.innerHTML = domStr
+        </script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul {
+            list-style: none;
+        }
+
+        li {
+            width: 100px;
+            margin-right: 20px;
+            height: 20px;
+            float: left;
+        }
+
+    </style>
+</head>
+
+<body>
+    <ul id="ul"></ul>
+    <script>
+        let ul = document.getElementById('ul')
+        let arr = [{
+                "name": "小明",
+                "age": 18,
+                "sex": "男"
+            },
+            {
+                "name": "小红",
+                "age": 20,
+                "sex": "女"
+            },
+            {
+                "name": "小芳",
+                "age": 15,
+                "sex": "女"
+            },
+        ]
+        for (let i = 0; i < arr.length; i++) {
+            console.log(arr[i].name)
+            ul.innerHTML += [
+                '    <li>',
+                '        <p>姓名：' + arr[i].name + '</p>',
+                '        <p>年龄：' + arr[i].age + '</p>',
+                '        <p>性别：' + arr[i].sex + '</p>',
+                '    </li>',
+            ].join('');
+        }
+    </script>
+</body>
+
+</html>

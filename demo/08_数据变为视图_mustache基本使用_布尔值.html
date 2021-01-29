@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <div id="div"></di>
+        <!-- 1、引包 -->
+        <script src="./lib/mustache.js"></script>
+        <script>
+            // 模板字符串
+            let templateStr = `
+            {{#boolVlaue}}
+                    <h1>您好，如果数据布尔值是true那么就能看见我，否则我就相当于v-if没有上树</h1>
+            {{/boolVlaue}}
+        `
+            // 数据
+            let data = {
+                boolVlaue: true
+            }
+            let domStr = Mustache.render(templateStr, data)
+            let div = document.getElementById('div')
+            div.innerHTML = domStr
+        </script>
+</body>
+
+</html>

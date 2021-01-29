@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+          ul {
+            list-style: none;
+        }
+
+        li {
+            width: 100px;
+            margin-right: 20px;
+            height: 20px;
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div"></div>
+    <!-- 1、引包 -->
+    <script src="./lib/mustache.js"></script>
+    <script>
+        //  {{#arr}}循环data中的arr开始
+        //  {{/arr}}循环data中的arr结束
+        let templateStr = `
+        <ul>
+            {{#arr}}
+                    <li>
+                       <p>姓名：{{name}}</p>
+                       <p>年龄：{{age }}</p>
+                       <p>性别：{{sex }}</p>
+                   </li>
+            {{/arr}}
+        </ul>
+        `
+        let data = {
+            arr: [{
+                    "name": "小明",
+                    "age": 18,
+                    "sex": "男"
+                },
+                {
+                    "name": "小红",
+                    "age": 20,
+                    "sex": "女"
+                },
+                {
+                    "name": "小芳",
+                    "age": 15,
+                    "sex": "女"
+                }]
+        }
+        let domStr = Mustache.render(templateStr, data)
+        let div =document.getElementById('div')
+        div.innerHTML=domStr
+    </script>
+</body>
+
+</html>

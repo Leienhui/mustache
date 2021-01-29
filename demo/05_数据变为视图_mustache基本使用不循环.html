@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div id="div">
+        </di>
+        <!-- 1、引包 -->
+        <script src="./lib/mustache.js"></script>
+        <script>
+            // 模板字符串
+            let templateStr = `<h1>我叫{{name}},今年{{age}}，我是一个{{sex}}孩子</h1>`;
+            // 数据
+            let data = {
+                "name": "小明",
+                "age": 18,
+                "sex": "男"
+            }
+            let domStr = Mustache.render(templateStr, data)
+            let div = document.getElementById('div')
+            div.innerHTML = domStr
+        </script>
+</body>
+
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+          ul {
+            list-style: none;
+        }
+
+        li {
+            width: 120px;
+            margin-right: 20px;
+            height: 20px;
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+  <h1>主要看后台console</h1>
+    <div id="div"></div>
+    <div id="div1"></div>
+    <!-- 1、引包 -->
+    <script src="./lib/mustache.js"></script>
+    <script>
+        //  {{#arr}}循环data中的arr开始
+        //  {{/arr}}循环data中的arr结束
+        let templateStr = `
+        <ul>
+            {{#arr}}
+                    <li>
+                       <p>姓名：{{name}}</p>
+                       <p>年龄：{{age }}</p>
+                       <p>性别：{{sex }}</p>
+                   </li>
+            {{/arr}}
+        </ul>
+        `
+        let data = {
+            arr: [{
+                    "name": "小明",
+                    "age": 18,
+                    "sex": "男"
+                },
+                {
+                    "name": "小红",
+                    "age": 20,
+                    "sex": "女"
+                },
+                {
+                    "name": "小芳",
+                    "age": 15,
+                    "sex": "女"
+                }]
+        }
+        let domStr = Mustache.render(templateStr, data)
+        let div =document.getElementById('div')
+        div.innerHTML=domStr
+
+
+
+
+      let templateStr1 = `
+        <ul>
+            {{#arr}}
+                    <li>
+                       <p>{{name}}的爱好是：
+                            <ol>
+                                {{#hobbies}}
+                                    <li>
+                                        {{.}}
+                                    </li>
+                                {{/hobbies}}
+
+                            </ol>
+                        </p>
+                   </li>
+            {{/arr}}
+        </ul>
+        `
+
+        let data1 = {
+            arr: [{
+                    "name": "小明",
+                    "age": 18,
+                    "sex": "男",
+                    "hobbies": ['吃瓜', '烫头', '打豆豆', '学习']
+                },
+                {
+                    "name": "小红",
+                    "age": 20,
+                    "sex": "女",
+                    "hobbies": ['吃瓜', '烫头', '打豆豆']
+                },
+                {
+                    "name": "小芳",
+                    "age": 15,
+                    "sex": "女",
+                    "hobbies": ['吃瓜', '烫头', '打豆豆', '睡觉']
+                }
+            ]
+        }
+        let domStr1 = Mustache.render(templateStr1, data1)
+        let div1 =document.getElementById('div1')
+        div1.innerHTML = domStr1
+    </script>
+</body>
+
+</html>

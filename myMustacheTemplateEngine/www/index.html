@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="div">
+
+    </div>
+    <!-- 引入虚拟打包文件 -->
+    <!-- 这就是这个项目中要暴露的东西 -->
+    <script src="/xuni/bundle.js"></script>
+    <script>
+        // 模板字符串
+        let templateStr = `
+        <ul>
+            {{#arr}}
+                    <li>
+                     我的名字{{name}},年龄是{{age}}
+                       <p>我的爱好是：{{#hobbies}}
+                        {{.}}
+                        {{/hobbies}}
+                        </p>
+                   </li>
+            {{/arr}}
+        </ul>
+        `
+        // 数据
+        let data = {
+            arr: [{
+                    "name": "小明",
+                    "age": 18,
+                    "sex": "男",
+                    "hobbies": ['吃瓜', '烫头', '打豆豆', '学习']
+                },
+                {
+                    "name": "小红",
+                    "age": 20,
+                    "sex": "女",
+                    "hobbies": ['吃瓜', '烫头', '打豆豆']
+                },
+                {
+                    "name": "小芳",
+                    "age": 15,
+                    "sex": "女",
+                    "hobbies": ['吃瓜', '烫头', '打豆豆', '睡觉']
+                }
+            ]
+        }
+        // 调用render函数
+        let domStr = myTemplateEngine.render(templateStr, data)
+        let div = document.getElementById('div')
+        div.innerHTML=domStr
+    </script>
+</body>
+
+</html>
